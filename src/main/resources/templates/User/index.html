@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	    
+ 	<link rel="stylesheet" type="text/css" href="style.css" th:href="@{/css/style.css}"/>
+ 	
+ 	<script src="script.js" th:src="@{/js/script.js}"></script>
+ 	
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+</head>
+<body>
+
+<!-- Start of Nav bar -->
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Smart Contact Manager</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="">welcome</a></li>
+					<li class="nav-item"><a class="nav-link" href="" th:href="@{/user/view-userProfile}" th:text="${user.name}"></a></li>
+					<li class="nav-item"><a class="nav-link" href="" th:href="@{/logout}">Logout</a></li>	
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- End of Nav bar -->
+
+
+	<div class="sidebar">
+	
+		<div class="crossbtn" onclick="togglesidebar()">&times;</div>
+	
+		<a href="#" th:href="@{/user/index}" class="item"><i class="fas fa-home"></i> Home</a>
+		<a href="#" th:href="@{/user/view-Contacts/0}" class="item"><i class="fas fa-address-book"></i> View Content</a>
+		<a href="#" th:href="@{/user/add-Contact}" class="item"><i class="fas fa-pencil-alt"></i> Add Contact</a>
+		<a href="#" th:href="@{/user/view-userProfile}" class="item"><i class="fas fa-user"></i> Your Profile</a>
+		<a href="#" class="item"><i class="fas fa-cogs"></i> Setting</a>
+		<a href="#" th:href="@{/logout}" class="item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		<div class="divider"></div>
+	</div>
+	
+	<div class="content">
+		<div class="fas fa-bars m-3 menubtn" onclick="togglesidebar()"></div>
+	
+	<div th:replace="${content}"></div>
+		
+	</div>
+	
+</body>
+
+</html>

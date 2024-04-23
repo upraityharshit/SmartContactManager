@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="User/index::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="box container justify-content-center col-lg-11 col-md-5 col-sm-5">
+			<div>
+				<a href="" th:href="@{/user/view-Contacts/0}">
+				<img alt="no_image" th:src="@{/image/backbutton.png}" style="width:40px; height:40px;">
+				</a>
+				<h1 style="text-align: center; margin-top:-32px;">CONTACT PROFILE</h1>
+				<div class="divider mt-1 mb-1"></div>
+			</div>
+
+			<div class="profilerow">
+				<div>
+					<img class="my-profile-image-2" alt="no_image" src=""
+						th:src="@{'/image/'+${contact.image}}">
+				</div>
+				<div>
+					<table class="table profile-table">
+					
+					<tr>
+						<th>Contact Id </th>
+						<td>:</td>
+						<td th:text="${contact.cid}"></td>
+					</tr>
+					<tr>
+						<th>Name </th>
+						<td>:</td>
+						<td th:text="${contact.name}"></td>
+					</tr>
+					<tr>
+						<th>Nick Name </th>
+						<td>:</td>
+						<td th:text="${contact.nickname}"></td>
+					</tr>
+					<tr>
+						<th>Email </th>
+						<td>:</td>
+						<td th:text="${contact.email}"></td>
+					</tr>
+					<tr>
+						<th>Phone </th>
+						<td>:</td>
+						<td th:text="${contact.phone}"></td>
+					</tr>
+					<tr>
+						<th>Work </th>
+						<td>:</td>
+						<td th:text="${contact.work}"></td>
+					</tr>
+					<tr>
+						<th>Description </th>
+						<td>:</td>
+						<td th:text="${contact.description}"></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<a style="height: 100%;width: 100%" th:href="@{'/user/edit-contact/'+${contact.cid}}"
+						class="btn btn-success btn-sm mb-1"> UPDATE</a>
+						<a style="height: 100%;width: 100%" th:href="@{'/user/delete/'+${contact.cid}}"
+						class="btn btn-danger btn-sm"> DELETE</a>
+						</td>
+					</tr>
+					
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+</body>
+</html>
