@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head::head">
+	
+</head>
+<body>
+
+<!-- Start of Nav bar -->
+
+	<div th:replace="common/header::header"></div>
+
+<!-- End of Nav bar -->
+
+	<section class="bannerhome d-flex justify-content-center align-items-center">	
+	<div class="container">
+			<div class="justify-content-center text-center h-100">
+				<h1 style="font-family: bold; font-size: 60px;">Smart Contact
+					Manager</h1>
+				<p style="font-size: 20px;">Start to save your contacts very
+					easiar way</p>
+
+				<a th:href="@{/signin}"><button class="btn bg-primary btn-lg-text">Get Started</button></a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
