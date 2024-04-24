@@ -108,16 +108,16 @@ nav ul li h3{
 	background: rgb(0, 255, 255);
 	margin-top: 30px;
 	border-radius: 20px;
-	
 }
 
 .sidebar a{
 	display: block;
-	width: 100%;
+	width: 80%;
 	margin-top: 40px;
 	margin-left: 20px;
 	font-size: 16px;
 	text-decoration: none;
+	
 }
 
 .sidebar a:hover{
@@ -212,6 +212,16 @@ tbody th{
 	text-align: left;
 }
 
+@media only screen and (max-width: 600px){
+	.profilerow{
+		width: 99%;
+		margin-left:5px;
+	}
+	.profile-table{
+		width: 99%;
+		margin-top: 20px;
+	}
+}
 .profilerow td,th{
 	color: navy;
 	font-family:sans-serif;
@@ -221,3 +231,9 @@ tbody th{
 	padding-left: 25px;
 }
 
+
+.card{
+	color: black;
+	margin-top: 100px;
+	position: absolute;
+}

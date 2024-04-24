@@ -13,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +43,9 @@ public class UserController {
 
 	@Autowired
 	private ContactRepository contactRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@ModelAttribute
 	public void addcommondata(Model model, Principal principal) {
@@ -49,7 +53,7 @@ public class UserController {
 
 		User user = userRepository.getUserByUserName(username);
 
-		System.out.println("User " + user);
+		//System.out.println("User " + user);
 		model.addAttribute("user", user);
 
 	}
@@ -71,6 +75,8 @@ public class UserController {
 		return "User/add_contact_form";
 	}
 
+	//save the new contact
+	
 	@PostMapping("/do_contact")
 	public String saveContact(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
 			Principal principal, Model model, HttpSession session, @RequestParam("profileImage") MultipartFile image) {
@@ -265,4 +271,41 @@ public class UserController {
 		
 		return "redirect:/user/view-Contacts/0";
 	}
+	
+	@GetMapping("/settings")
+	public String openSetting(Model model) {
+		
+		model.addAttribute("title", "Change Password");
+		return "User/settings";
+	}
+	
+	
+	//change the user password
+	
+	@PostMapping("/password-change")
+	public String changepassword(@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword,
+			@RequestParam("CnewPassword") String CnewPassword, 
+			Principal principal, HttpSession session)
+	{
+		
+		User user = this.userRepository.getUserByUserName(principal.getName());
+		
+		if(bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+			if(newPassword.equals(CnewPassword)) {
+				
+				user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+				this.userRepository.save(user);
+				session.setAttribute("message", new Message("Password changed Successfully", "alert-success"));
+				
+			}
+			else
+				session.setAttribute("message", new Message("New and confirm Password is not matched", "alert-danger"));
+		}
+		else 
+			session.setAttribute("message", new Message("Old password is not matched", "alert-danger"));
+		
+		return "redirect:/user/settings";
+	}
+	
 }
