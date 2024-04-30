@@ -1,3 +1,3 @@
-#SMART CONTENT MANAGER
+# SMART CONTENT MANAGER
 
 Smart content manager project
