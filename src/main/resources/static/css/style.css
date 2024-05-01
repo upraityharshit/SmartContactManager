@@ -237,3 +237,19 @@ tbody th{
 	margin-top: 100px;
 	position: absolute;
 }
+
+/* Search container css  */
+
+.search-contact{
+	position: relative;
+	width: 100%;
+}
+
+.search-result{
+	position: absolute;
+	width: 100%;
+	display: none;
+	border: 2px solid grey;
+	border-radius: 10px;
+	color: black;
+}

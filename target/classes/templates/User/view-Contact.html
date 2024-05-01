@@ -15,9 +15,27 @@
 			<th:block th:text="${@sessionHelper.removeMessage()}"></th:block>
 			
 			<div class="row">
-				<h1 style="text-align:center;">Contacts Details</h1>
-				<div class="divider mt-1 mb-1"></div>
+				<h1 style="text-align:center;">Contacts Details</h1>	
 			</div>
+			
+				<!-- Divider  -->
+				<div class="divider mt-1 mb-1"></div>
+				
+			<!-- Search contacts fields -->
+			
+			<div class="search-contact my-2">
+				
+				<input type="text" class="form-control" id="search-field" name="search-field" onkeyup="search()" placeholder="Search the Contact"/>
+			
+				<div class="search-result">
+				
+				</div>
+			
+			</div>
+				
+				<!-- Divider  -->
+				<div class="divider mt-1 mb-1"></div>
+				
 			<div class="table-responsive">
 			<table class="table table-striped table-bordered">
 				<thead class="table-dark">
