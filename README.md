@@ -1,4 +1,4 @@
-# SMART CONTENT MANAGER
+# SMART CONTACT MANAGER
 
 Overview
 Smart Content Manager is a web-based application developed using Spring Boot, Java, HTML, CSS, and JavaScript. It provides a user-friendly interface for managing digital content efficiently. The system allows users to upload, organize, and search for various types of content, such as documents, images, videos, and more.
