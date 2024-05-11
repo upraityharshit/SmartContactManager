@@ -1,6 +1,6 @@
 # SMART CONTACT MANAGER
 
-Overview
+**Overview**
 Smart Content Manager is a web-based application developed using Spring Boot, Java, HTML, CSS, and JavaScript. It provides a user-friendly interface for managing digital content efficiently. The system allows users to upload, organize, and search for various types of content, such as documents, images, videos, and more.
 
 **Features**
@@ -26,7 +26,7 @@ Smart Content Manager is a web-based application developed using Spring Boot, Ja
 5) JavaScript: Programming language for implementing interactive features and dynamic behavior.
 6) Thymeleaf: Java-based template engine for server-side rendering of HTML templates.
 
-Getting Started
+**Getting Started**
 To get started with the Smart Content Manager project, follow these steps:
 
 1) Clone the repository to your local machine.
@@ -35,5 +35,5 @@ To get started with the Smart Content Manager project, follow these steps:
 4) Build and run the application using Maven or your preferred IDE.
 5) Access the application through your web browser and start managing your content.
 
-Contribution
+**Contribution**
 Contributions to the Smart Content Manager project are welcome! If you find any issues or have suggestions for improvements, feel free to submit a pull request or open an issue on GitHub.
