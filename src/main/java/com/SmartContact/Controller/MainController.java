@@ -8,7 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.SmartContact.Entity.User;
 import com.SmartContact.helper.Message;
@@ -39,7 +41,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/signup")
-	public String signup(Model model,HttpSession session) {
+	public String signup(Model model) {
 		model.addAttribute("title", "SignUp - Smart Contact Manager");
 		model.addAttribute("user", new User());
 		return "signup";
@@ -101,6 +103,13 @@ public class MainController {
 		
 		model.addAttribute("title", "Login");
 		return "Login";
+	}
+	
+	@GetMapping("/sendotp")
+	public String sendotp(Model model) {
+		System.out.println("sendotp");
+		model.addAttribute("user", new User());
+		return "signup"; 
 	}
 	
 }

@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
+@EnableMethodSecurity(securedEnabled = true)
 public class MyConfig{
 	
 	@Bean
@@ -39,15 +39,14 @@ public class MyConfig{
 	
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http.csrf().disable()
-	    .authorizeHttpRequests()
-	    .requestMatchers("/user/**").authenticated()
-	    .requestMatchers("/admin/**").authenticated()
-	    .requestMatchers("/**").permitAll()
-	    .and().formLogin()
-	    .loginPage("/signin")
-	    .loginProcessingUrl("/dologin")
-	    .defaultSuccessUrl("/user/index");
+        http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/user/**").authenticated()
+                        .requestMatchers("/admin/**").authenticated()
+                        .requestMatchers("/**").permitAll()).formLogin(login -> login
+                .loginPage("/signin")
+                .loginProcessingUrl("/dologin")
+                .defaultSuccessUrl("/user/index"));
 		
 	    return http.build();
 	}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="common/head::head"></head>
+<head th:insert="~{common/head::head}"></head>
 <head>
 	<link rel="stylesheet" th:href="@{css/logincss.css}"/>
 </head>
@@ -9,7 +9,7 @@
 
 <!-- Start of Nav bar -->
 
-<div th:replace="common/header::header"></div>
+<div th:replace="~{common/header::header}"></div>
 
 
 <!-- End of Nav bar -->

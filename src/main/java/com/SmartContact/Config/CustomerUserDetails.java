@@ -13,6 +13,10 @@ public class CustomerUserDetails implements UserDetails{
 	
 	private User user;
 
+	public CustomerUserDetails() {
+		
+	}
+	
 	public CustomerUserDetails(User user) {
 		super();
 		this.user = user;

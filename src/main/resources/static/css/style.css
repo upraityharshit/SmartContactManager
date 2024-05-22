@@ -22,6 +22,8 @@ body{
 	background-color: rgba(0, 50, 222, 0.2) !important;
 	color: white;
 	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .bannerhome {

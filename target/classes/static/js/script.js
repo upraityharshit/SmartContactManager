@@ -33,12 +33,8 @@ function deleteContact(cid) {
 						swal("Your contact is safe!");
 					}
 				});
-		}
-		
-const passwordform = () => {
-	document.getElementById()
 }
-
+		
 const search = () =>{
 	
 	let query = $("#search-field").val();
@@ -70,8 +66,78 @@ const search = () =>{
 			$(".search-result").show();
 			
 		})
-	}
+	}	
 	
-	
-	
+}
+
+
+var otp=0;
+
+const SendOTP = () => {
+	 $('.submit').prop('disabled', true);
+    let email = $("#email").val();
+    
+    if (email === "") {
+        $(".verifyotp").hide();
+        return;
+    }
+    
+    otp = Math.floor((Math.random() * 1000000) + 1);
+    console.log(otp);
+    const data = {
+        "to": email,
+        "subject": "Verification OTP",
+        "message": `Your OTP is: ${otp}`
+    };
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    
+    const url = 'https://emailapi-backend.onrender.com/sendemail';
+    
+    fetch(url, requestOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Mail not sent...!');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        
+        let text = `<div class='form-group email mt-3'>`;
+        text += `<input type='number' id="otpfield" class='form-control' placeholder='Enter your email OTP' required>`;
+        text += `<button type='button' class='btn btn-warning verify' onclick='verify()'>Verify</button>`;
+        text += `</div>`;
+        
+        $(".verifyotp").html(text);
+        $(".verifyotp").show();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+};
+
+function verify(){
+		let otpdata = $("#otpfield").val();
+		
+		if(otpdata === ""){
+			alert("Please Enter the OTP and Verify");
+		}
+		else{
+			if(otp!=otpdata){
+				alert("OTP is not matched");
+			}
+			else{
+				alert("Email has been verified...");
+				$(".verify").css("background-color", "Green");
+				$(".verify").css("color", "white");
+				$('.submit').prop('disabled', false);
+			}
+		}
 }
