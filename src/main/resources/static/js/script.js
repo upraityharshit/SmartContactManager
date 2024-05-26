@@ -70,7 +70,6 @@ const search = () =>{
 	
 }
 
-
 var otp=0;
 
 const SendOTP = () => {
@@ -83,7 +82,7 @@ const SendOTP = () => {
     }
     
     otp = Math.floor((Math.random() * 1000000) + 1);
-    console.log(otp);
+    //console.log(otp);
     const data = {
         "to": email,
         "subject": "Verification OTP",
@@ -108,7 +107,7 @@ const SendOTP = () => {
         return response.json();
     })
     .then(data => {
-        console.log(data);
+        //console.log(data);
         
         let text = `<div class='form-group email mt-3'>`;
         text += `<input type='number' id="otpfield" class='form-control' placeholder='Enter your email OTP' required>`;
